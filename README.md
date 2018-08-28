@@ -2,13 +2,17 @@
 # FROGGER GAME
  
 STEP 1:  CLONE REPOSITORY
+ 
 STEP 2:  OPEN HTML FILE IN BROWSER
+ 
 STEP 3:  PLAY!
  
 ## HOW TO PLAY
  
 STEP 1: USE ARROW KEYS TO MOVE PLAYER
+ 
 STEP 2: GET ACROSS THE ROAD WITHOUT HITTING ANY ICKY BUGS
+ 
 STEP 3: REACH THE WATER OR TRY AGAIN
  
 ### THINGS YOU MAY WANT TO ADD (I MAY ADD IN THE FUTURE)
@@ -23,7 +27,8 @@ STEP 3: REACH THE WATER OR TRY AGAIN
 
 
 ### Project Instructions Below from Udacity
-
+## This project contains Udacity code.  My Code is located in 'app.js' and shows my skills in OOP.
+ 
 frontend-nanodegree-arcade-game
 ===============================
 
