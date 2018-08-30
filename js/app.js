@@ -1,12 +1,12 @@
 // Enemies our player must avoid
-const Enemy = function(location) {
+const Enemy = function(location,speed) {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
     //set canvas location from Array
     this.x = location[0];
     this.y = location[1];
     //set speed
-    this.speed = 20;
+    this.speed = speed;
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
     this.sprite = 'images/enemy-bug.png';
@@ -17,8 +17,13 @@ const Enemy = function(location) {
 Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
-    // all computers. Also, handle collision with Player.
-    this.speed = this.speed + dt;
+    // all computers. Also handle collision with Player?
+    if (this.x > 500) {
+        this.x -= 500
+    }
+    else {
+        this.x += this.speed * dt;
+    }
 };
 
 // Draw the enemy on the screen, required method for game
@@ -49,16 +54,16 @@ Player.prototype.render = function () {
 Player.prototype.handleInput = function (key) {
     switch (key) {
         case 'left':
-            this.x -= 25;
+            this.x -= 75;
             break;
         case 'up':
-            this.y -= 25;
+            this.y -= 75;
             break;
         case 'right':
-            this.x += 25;
+            this.x += 75;
             break;
         case 'down':
-            this.y += 25;
+            this.y += 75;
             break;
     };
 };
@@ -66,13 +71,14 @@ Player.prototype.handleInput = function (key) {
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
-const bugOne = new Enemy([50,100]);
-const bugTwo = new Enemy([150,200]);
-const bugThree = new Enemy([250,100]);
-const bugFour = new Enemy([350,200]);
-const bugFive = new Enemy([400,100]);
+const bugOne = new Enemy([50,60],50);
+const bugTwo = new Enemy([75,145],200);
+const bugThree = new Enemy([250,230],250);
+const bugFour = new Enemy([475,230],60);
+const bugFive = new Enemy([20,60],150);
+const bugSix = new Enemy([200,145],175);
 
-const allEnemies = [bugOne, bugTwo, bugThree, bugFour, bugFive];
+const allEnemies = [bugOne, bugTwo, bugThree, bugFour, bugFive, bugSix];
 
 let player = new Player('images/char-cat-girl.png',[200,350]);
 
