@@ -4,7 +4,7 @@ const Enemy = function(location,speed) {
     // set canvas location from Array
     this.x = location[0];
     this.y = location[1];
-    //set speed
+    // set speed
     this.speed = speed;
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
@@ -34,19 +34,25 @@ Enemy.prototype.render = function() {
 // This class requires an update(), render() and
 // a handleInput() method.
 const Player = function (sprite,location) {
-    //set canvas location
+    // set canvas location
     this.x = location[0];
     this.y = location[1];
-    //set image location
+    // set image location
     this.sprite = sprite;
 };
 
 Player.prototype.update = function() {
-    //handle collision with enemy
+    // you win!
+    if (this.y === -29) {
+        alert("YOU WIN!  LET'S PLAY AGAIN!");
+        this.x = 202;
+        this.y = 303;
+    }
+    // handle collision with enemy
     for (bug of allEnemies) {
-        //is bug.x within range of player.x?
+        // is bug.x within range of player.x?
         let checkX = bug.x - 50 <= this.x  && bug.x + 50 >= this.x;
-        //is bug.y equal to player.y?
+        // is bug.y equal to player.y?
         let checkY = bug.y == this.y;
 
         // if both checkX and checkY are True OR player goes off grid
@@ -57,7 +63,7 @@ Player.prototype.update = function() {
             this.y > 400 ||
             this.x < -50 ||
             this.x > 500) {
-            //return player back to start position
+            // return player back to start position
             this.x = 202;
             this.y = 303;
 
@@ -69,7 +75,7 @@ Player.prototype.render = function () {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-//move player based on direction on 'keyup'
+// move player based on direction on 'keyup'
 Player.prototype.handleInput = function (key) {
     switch (key) {
         case 'left':
