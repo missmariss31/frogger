@@ -1,8 +1,7 @@
 // Enemies our player must avoid
 const Enemy = function(location,speed) {
-    // Variables applied to each of our instances go here,
-    // we've provided one for you to get started
-    //set canvas location from Array
+    // Variables applied to each of our instances go here
+    // set canvas location from Array
     this.x = location[0];
     this.y = location[1];
     //set speed
@@ -17,7 +16,7 @@ const Enemy = function(location,speed) {
 Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
-    // all computers. Also handle collision with Player?
+    // all computers.
     if (this.x > 500) {
         this.x -= 500
     }
@@ -43,7 +42,22 @@ const Player = function (sprite,location) {
 };
 
 Player.prototype.update = function() {
-    //handle collision with enemy;
+    //handle collision with enemy
+    for (bug of allEnemies) {
+        //is bug.x within range of player.x?
+        if (player.y > 200) {
+            console.log(player.x,player.y,bug.x,bug.y);
+        }
+        let checkX = Math.floor(bug.x) === player.x  || Math.ceil(bug.x) === player.x;
+        //is bug.y within range of player.y?
+        let checkY = bug.y === player.y;
+
+        //if both are True, update position of player back to start
+        if (checkX && checkY) {
+            player.x = 202;
+            player.y = 303;
+        }
+    }
 };
 
 Player.prototype.render = function () {
@@ -54,16 +68,16 @@ Player.prototype.render = function () {
 Player.prototype.handleInput = function (key) {
     switch (key) {
         case 'left':
-            this.x -= 75;
+            this.x -= 101;
             break;
         case 'up':
-            this.y -= 75;
+            this.y -= 83;
             break;
         case 'right':
-            this.x += 75;
+            this.x += 101;
             break;
         case 'down':
-            this.y += 75;
+            this.y += 83;
             break;
     };
 };
@@ -71,16 +85,16 @@ Player.prototype.handleInput = function (key) {
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
-const bugOne = new Enemy([50,60],50);
-const bugTwo = new Enemy([75,145],200);
-const bugThree = new Enemy([250,230],250);
-const bugFour = new Enemy([475,230],60);
-const bugFive = new Enemy([20,60],150);
-const bugSix = new Enemy([200,145],175);
+const bugOne = new Enemy([50,54],50);
+const bugTwo = new Enemy([75,137],100);
+const bugThree = new Enemy([250,220],50);
+const bugFour = new Enemy([475,220],60);
+const bugFive = new Enemy([20,54],50);
+const bugSix = new Enemy([200,137],75);
 
 const allEnemies = [bugOne, bugTwo, bugThree, bugFour, bugFive, bugSix];
 
-let player = new Player('images/char-cat-girl.png',[200,350]);
+let player = new Player('images/char-cat-girl.png',[202,303]);
 
 
 // This listens for key presses and sends the keys to your
