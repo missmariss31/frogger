@@ -46,13 +46,21 @@ Player.prototype.update = function() {
     for (bug of allEnemies) {
         //is bug.x within range of player.x?
         let checkX = bug.x - 50 <= this.x  && bug.x + 50 >= this.x;
-        //is bug.y within range of player.y?
+        //is bug.y equal to player.y?
         let checkY = bug.y == this.y;
 
-        //if both are True, update position of player back to start
-        if (checkX && checkY) {
+        // if both checkX and checkY are True OR player goes off grid
+        // update position of player back to start
+        if (checkX && checkY || 
+            //check if player is outside of grid
+            this.y < -50 || 
+            this.y > 400 ||
+            this.x < -50 ||
+            this.x > 500) {
+            //return player back to start position
             this.x = 202;
             this.y = 303;
+
         }
     }
 };
