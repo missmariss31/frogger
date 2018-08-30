@@ -45,17 +45,14 @@ Player.prototype.update = function() {
     //handle collision with enemy
     for (bug of allEnemies) {
         //is bug.x within range of player.x?
-        if (player.y > 200) {
-            console.log(player.x,player.y,bug.x,bug.y);
-        }
-        let checkX = Math.floor(bug.x) === player.x  || Math.ceil(bug.x) === player.x;
+        let checkX = bug.x - 50 <= this.x  && bug.x + 50 >= this.x;
         //is bug.y within range of player.y?
-        let checkY = bug.y === player.y;
+        let checkY = bug.y == this.y;
 
         //if both are True, update position of player back to start
         if (checkX && checkY) {
-            player.x = 202;
-            player.y = 303;
+            this.x = 202;
+            this.y = 303;
         }
     }
 };
@@ -85,12 +82,12 @@ Player.prototype.handleInput = function (key) {
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
-const bugOne = new Enemy([50,54],50);
-const bugTwo = new Enemy([75,137],100);
-const bugThree = new Enemy([250,220],50);
-const bugFour = new Enemy([475,220],60);
-const bugFive = new Enemy([20,54],50);
-const bugSix = new Enemy([200,137],75);
+const bugOne = new Enemy([54,54],75);
+const bugTwo = new Enemy([54,137],120);
+const bugThree = new Enemy([155,220],50);
+const bugFour = new Enemy([155,220],175);
+const bugFive = new Enemy([256,54],60);
+const bugSix = new Enemy([256,137],275);
 
 const allEnemies = [bugOne, bugTwo, bugThree, bugFour, bugFive, bugSix];
 
