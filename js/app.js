@@ -93,6 +93,15 @@ Player.prototype.handleInput = function (key) {
     };
 };
 
+Player.prototype.handleClick = function(e) {
+    console.log(e);
+    if (e.y<523) {
+        player.handleInput('up');
+    }else {
+        player.handleInput('down');
+    }
+};
+ 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
@@ -120,3 +129,6 @@ document.addEventListener('keyup', function(e) {
 
     player.handleInput(allowedKeys[e.keyCode]);
 });
+
+// backup for mobile
+document.addEventListener('click', (e) => player.handleClick(e));
